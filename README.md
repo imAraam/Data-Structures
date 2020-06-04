@@ -18,9 +18,9 @@ containers
 
 # The Search Based Algorithm
 
-### Performance consequence of these containers for the search based algorithm
+## Performance consequence of these containers for the search based algorithm
 
-#### std::list 
+### std::list 
 
 Implementing the search based algorithm using a list would be accomplished by first inserting all the names as pairs into a vector. Which would be fast and efficient as all the names would be read from the file into the vector, to then be inserted into a list of names. The algorithm would then choose a random name as the starting point, it would then copy that name to be the first element in a new ordered list of names. It would then place the 2nd element (name) of that pair, as the first name’s westerly neighbour on the ordered list of names. It would then sequentially have to traverse the list of names to find a pair where the 2nd element in the first pair is the 1st element in another pair. And then copy that 2nd element on the other pair as the following westerly neighbour in the ordered list of names. 
 
@@ -51,7 +51,7 @@ std::list has a linear space complexity with respect to the number of elements i
 
 
 
-#### std::map
+### std::map
 
 Implementing the search-based algorithm using a map would mean inserting all the names into a list of string pairs, where the two names on each piece of paper represent one string pair in the list. Then it will proceed to choosing a starting name and extracting the correct westerly neighbour of that name and the following names, and then extracting the correct easterly neighbours of that same starting name. This is done using a sequential search in the list to find a name matching the 2nd element of the first pair for the westerly neighbour. As well as, finding a name matching the 1st element of the first pair for the easterly neighbour. 
 
@@ -90,3 +90,30 @@ Time complexity of algorithm as a whole: O(n) as even if sorting is O(n log n) a
 Space usage implications 
 
 std::map has a linear space complexity with respect to the number of elements it contains. 
+
+
+### std::unordered_map
+
+Implementing the search-based algorithm using an unordered map would mean constructing a hash table that maps the first name element to the element directly after it, as well as, a reverse index hash to all the names that have predecessors. Each name will be given a unique mapped value using the hash function. The algorithm would then find a unique entry which has no predecessor, that would be the head name. Then it would start with the head name to look up all the other names succeeding it until the names have been restored to the correct order.  
+
+Example: 
+
+ -----------------A-------------------------------|-------------------------K--------------------|
+ 
+Index = 01  Hash = #2KF94 (head)---------------Index = 02  Hash = 9DL16 (successor) 
+
+This will allow for the names to be contained in the unordered map while still being able to identify the names’ respective westerly and easterly neighbours.
+
+Time-complexity of the algorithm:
+
+Insertion: O(1) due to insertions taking the same amount of time, regardless of the size of the data. 
+
+Sorting: Due to the hash values and the indexing of elements, sorting can occur at O(1) constant time complexity. However, it can be O(n) in worst case if collisions occur. 
+
+Search: O(n) due to the index being accessed in random order and having an unknown size. 
+
+Time complexity of algorithm as a whole: O(n) as insertions and sorting can be ignored. 
+
+Space usage implications:
+
+std::unordered_map has a linear space complexity with respect to the number of elements it contains. 
