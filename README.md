@@ -21,6 +21,7 @@ containers
 #### Performance consequence of these containers for the search based algorithm
 
 std::list 
+
 Implementing the search based algorithm using a list would be accomplished by first inserting all the names as pairs into a vector. Which would be fast and efficient as all the names would be read from the file into the vector, to then be inserted into a list of names. The algorithm would then choose a random name as the starting point, it would then copy that name to be the first element in a new ordered list of names. It would then place the 2nd element (name) of that pair, as the first name’s westerly neighbour on the ordered list of names. It would then sequentially have to traverse the list of names to find a pair where the 2nd element in the first pair is the 1st element in another pair. And then copy that 2nd element on the other pair as the following westerly neighbour in the ordered list of names. 
 
 Considering the following letters as names, an example is as follows: 
