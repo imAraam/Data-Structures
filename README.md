@@ -80,9 +80,13 @@ This process can be repeated until all the names have been restored to the corre
 Time-complexity of the algorithm:
 
 Insertion: O(1) due to insertions taking the same amount of time regardless of the size of the data. 
+
 Sorting: O (n log n) average case due to having to traverse tree to find the correct node to insert items alphabetically from list into the BST. 
+
 Search: O(n) due to the function having to traverse the vector to find the westerly/easterly neighbour of the element in the list of pairs.
+
 Time complexity of algorithm as a whole: O(n) as even if sorting is O(n log n) and insertion is constant, algorithm will still have a linear search complexity.
 
 Space usage implications 
+
 std::map has a linear space complexity with respect to the number of elements it contains. 
