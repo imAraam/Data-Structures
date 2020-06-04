@@ -53,4 +53,36 @@ std::list has a linear space complexity with respect to the number of elements i
 
 #### std::map
 
+Implementing the search-based algorithm using a map would mean inserting all the names into a list of string pairs, where the two names on each piece of paper represent one string pair in the list. Then it will proceed to choosing a starting name and extracting the correct westerly neighbour of that name and the following names, and then extracting the correct easterly neighbours of that same starting name. This is done using a sequential search in the list to find a name matching the 2nd element of the first pair for the westerly neighbour. As well as, finding a name matching the 1st element of the first pair for the easterly neighbour. 
 
+Considering the following letters as names, an example is as follows: 
+z, m 
+
+m, b 
+
+c, l 
+
+b, x 
+
+Where ‘b’ would be the westerly neighbour of ‘m’, and the easterly neighbour of ‘x’. 
+
+Once the names are extracted, they will be contained in a map and stored in a BST. The names will be sorted in alphabetical order where the names on the most western side will be on the left side of 
+the tree with their eastern neighbours to their right. Meaning if the names were represented as numbers, the most westerly name will have the lowest value, and the most easterly name will have the highest. 
+
+Consider the 7 names, A-G. An example would be as follows: 
+
+               D 
+          B          F 
+       A    C     E    G 
+       
+This process can be repeated until all the names have been restored to the correct order. 
+
+Time-complexity of the algorithm:
+
+Insertion: O(1) due to insertions taking the same amount of time regardless of the size of the data. 
+Sorting: O (n log n) average case due to having to traverse tree to find the correct node to insert items alphabetically from list into the BST. 
+Search: O(n) due to the function having to traverse the vector to find the westerly/easterly neighbour of the element in the list of pairs.
+Time complexity of algorithm as a whole: O(n) as even if sorting is O(n log n) and insertion is constant, algorithm will still have a linear search complexity.
+
+Space usage implications 
+std::map has a linear space complexity with respect to the number of elements it contains. 
